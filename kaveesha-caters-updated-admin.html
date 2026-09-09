@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaveesha Caters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF6EF;
+    --cream-deep:#F1EADC;
+    --ink:#2A2420;
+    --ink-soft:#5A5148;
+    --teal:#1F4B43;
+    --teal-light:#2F6A5C;
+    --gold:#C9973F;
+    --gold-deep:#A97A28;
+    --maroon:#7A2E2E;
+    --maroon-deep:#5E2020;
+    --sage:#5B6B5B;
+    --sage-deep:#44514A;
+    --line:rgba(42,36,32,0.14);
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    color:var(--ink);
+    margin:0;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  header.site-nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,246,239,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1080px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;letter-spacing:0.2px;}
+  .brand span{color:var(--teal);}
+  nav.links{display:flex;gap:22px;flex-wrap:wrap;}
+  nav.links a{
+    text-decoration:none;font-size:0.95rem;color:var(--ink-soft);
+    padding:6px 2px;border-bottom:2px solid transparent;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  nav.links a:hover,nav.links a:focus-visible{color:var(--ink);border-color:var(--teal);}
+  .nav-cta{
+    background:var(--teal);color:#fff;border:none;padding:10px 18px;
+    border-radius:3px;font-weight:600;font-size:0.9rem;cursor:pointer;
+    text-decoration:none;white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--teal-light);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:88px 24px 64px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 85% 20%, rgba(201,151,63,0.14), transparent 45%),
+      var(--cream);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cpath d='M0 110 Q55 60 110 110 T220 110' stroke='%231F4B43' stroke-opacity='0.06' stroke-width='2' fill='none'/%3E%3Cpath d='M0 150 Q55 100 110 150 T220 150' stroke='%231F4B43' stroke-opacity='0.05' stroke-width='2' fill='none'/%3E%3Cpath d='M0 70 Q55 20 110 70 T220 70' stroke='%231F4B43' stroke-opacity='0.05' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-size:220px 220px;
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;max-width:1080px;margin:0 auto;
+    display:flex;flex-direction:column;align-items:flex-start;gap:22px;
+    animation:riseIn .7s ease both;
+  }
+  @keyframes riseIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+  @media (prefers-reduced-motion:reduce){.hero-inner{animation:none;}}
+  .eyebrow-plain{color:var(--teal);font-weight:600;font-size:0.95rem;}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1.12;max-width:14ch;}
+  .hero p.lede{max-width:52ch;font-size:1.08rem;color:var(--ink-soft);}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+  .btn-primary,.btn-ghost{
+    padding:13px 24px;border-radius:3px;font-weight:600;font-size:0.98rem;
+    text-decoration:none;display:inline-block;cursor:pointer;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--teal);color:#fff;}
+  .btn-primary:hover{background:var(--teal-light);}
+  .btn-ghost{background:transparent;border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--cream);}
+
+  /* SECTION GENERIC */
+  section.category{
+    padding:72px 24px;
+    border-top:1px solid var(--line);
+  }
+  .cat-head{
+    display:flex;align-items:flex-start;gap:18px;margin-bottom:36px;
+    max-width:1080px;margin-left:auto;margin-right:auto;
+  }
+  .cat-icon{
+    flex:0 0 auto;width:52px;height:52px;border-radius:3px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .cat-icon svg{width:26px;height:26px;}
+  .cat-head h2{font-size:1.9rem;margin-bottom:4px;}
+  .cat-head p{margin:0;color:var(--ink-soft);max-width:56ch;}
+
+  .pkg-grid{
+    max-width:1080px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  }
+  @media (max-width:820px){.pkg-grid{grid-template-columns:1fr;}}
+
+  .pkg-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-top:4px solid var(--tone,var(--teal));
+    border-radius:2px;
+    padding:26px 24px 24px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .pkg-name{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;}
+  .pkg-price{font-size:1.6rem;font-weight:700;color:var(--tone,var(--teal));}
+  .pkg-price small{font-size:0.85rem;font-weight:500;color:var(--ink-soft);}
+  .pkg-items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;flex:1;}
+  .pkg-items li{
+    font-size:0.93rem;color:var(--ink-soft);
+    padding-left:16px;position:relative;
+  }
+  .pkg-items li::before{
+    content:"";position:absolute;left:0;top:9px;width:6px;height:6px;
+    background:var(--tone,var(--teal));border-radius:50%;
+  }
+  .select-btn{
+    margin-top:6px;width:100%;padding:11px;border-radius:3px;border:1px solid var(--tone,var(--teal));
+    background:transparent;color:var(--tone,var(--teal));font-weight:600;font-size:0.95rem;cursor:pointer;
+    transition:background .15s ease,color .15s ease;
+  }
+  .select-btn:hover{background:var(--tone,var(--teal));color:#fff;}
+  .select-btn.active{background:var(--tone,var(--teal));color:#fff;}
+
+  .guest-calc{
+    border-top:1px dashed var(--line);padding-top:14px;margin-top:4px;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .guest-calc[hidden]{display:none;}
+  .guest-calc label{font-size:0.85rem;color:var(--ink-soft);font-weight:600;}
+  .guest-calc input{
+    padding:9px 10px;border:1px solid var(--line);border-radius:3px;font-size:0.95rem;
+    font-family:'Work Sans',sans-serif;width:100%;
+  }
+  .guest-calc .calc-total{
+    font-weight:700;font-size:1.15rem;color:var(--ink);
+  }
+  .guest-calc .calc-total span{color:var(--tone,var(--teal));}
+
+  /* FUNERAL tone override - quieter card */
+  #funeral .pkg-card{background:#FBFAF7;}
+
+  /* CUSTOMIZE */
+  #customize{background:var(--cream-deep);}
+  .builder{
+    max-width:1080px;margin:0 auto;
+    display:grid;grid-template-columns:1.5fr 1fr;gap:32px;
+  }
+  @media (max-width:900px){.builder{grid-template-columns:1fr;}}
+  .food-groups{display:flex;flex-direction:column;gap:26px;}
+  .food-group h3{font-size:1.05rem;margin-bottom:12px;color:var(--teal);font-weight:600;}
+  .food-list{display:flex;flex-direction:column;gap:8px;}
+  .food-row{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:var(--card);border:1px solid var(--line);border-radius:3px;
+    padding:11px 14px;cursor:pointer;
+  }
+  .food-row:hover{border-color:var(--teal);}
+  .food-row .fname{display:flex;align-items:center;gap:10px;font-size:0.95rem;}
+  .food-row input{accent-color:var(--teal);width:17px;height:17px;}
+  .food-row .fprice{font-weight:600;color:var(--ink-soft);font-size:0.9rem;white-space:nowrap;}
+
+  .summary-panel{
+    position:sticky;top:90px;align-self:start;
+    background:var(--card);border:1px solid var(--line);border-radius:3px;
+    padding:26px;display:flex;flex-direction:column;gap:16px;
+  }
+  .summary-panel h3{font-family:'Fraunces',serif;font-size:1.25rem;}
+  .summary-line{display:flex;justify-content:space-between;font-size:0.95rem;color:var(--ink-soft);}
+  .summary-line strong{color:var(--ink);font-weight:600;}
+  .divider{border:none;border-top:1px solid var(--line);margin:2px 0;}
+  .summary-panel label{font-size:0.85rem;font-weight:600;color:var(--ink-soft);}
+  .summary-panel input{
+    padding:10px;border:1px solid var(--line);border-radius:3px;font-size:1rem;
+    font-family:'Work Sans',sans-serif;
+  }
+  .grand-total{
+    font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:var(--teal);
+    display:flex;justify-content:space-between;align-items:baseline;
+  }
+  .grand-total small{font-size:0.75rem;font-weight:500;color:var(--ink-soft);font-family:'Work Sans',sans-serif;}
+  .hint{font-size:0.82rem;color:var(--ink-soft);}
+
+  footer{
+    padding:40px 24px 32px;border-top:1px solid var(--line);
+    text-align:center;color:var(--ink-soft);font-size:0.9rem;
+  }
+  footer .brand{display:block;margin-bottom:6px;}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="brand">Kaveesha <span>Caters</span></div>
+    <nav class="links">
+      <a href="#birthday">Birthday Party</a>
+      <a href="#wedding">Wedding</a>
+      <a href="#funeral">Funeral</a>
+      <a href="#customize">Customize</a>
+    </nav>
+    <a href="#customize" class="nav-cta">ඔබේම Plate එක සාදන්න</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow-plain">Kaveesha Caters — ඔබේ අවස්ථාවට ගැලපෙන රසය</div>
+    <h1>සෑම අවස්ථාවකටම, හදවතින්ම පිසූ ආහාර</h1>
+    <p class="lede">උපන්දින සාද, විවාහ මංගල්‍ය, අවමංගල්‍ය කටයුතු — හෝ ඔබටම විශේෂ menu එකක්. පහළින් category එකක් තෝරාගෙන, package එකක් හෝ customize plate එකක් සාදාගෙන, මුළු මිල එවෙලේම බලාගන්න.</p>
+    <div class="hero-actions">
+      <a href="#birthday" class="btn-primary">Package බලන්න</a>
+      <a href="#customize" class="btn-ghost">Plate එක Customize කරන්න</a>
+    </div>
+  </div>
+</section>
+
+<!-- BIRTHDAY -->
+<section class="category" id="birthday">
+  <div class="cat-head">
+    <div class="cat-icon" style="background:rgba(201,151,63,0.14);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#A97A28" stroke-width="1.6"><path d="M12 3c-1 1.2-1 2.4 0 3.4s1 2.2 0 3.4"/><path d="M4 21v-8a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8"/><path d="M4 17h16"/><circle cx="12" cy="3" r="1"/></svg>
+    </div>
+    <div>
+      <h2>Birthday Party</h2>
+      <p>සිනහවෙන් පිරුණු දවසකට, රසවත් menu packages 3ක්.</p>
+    </div>
+  </div>
+
+  <div class="pkg-grid" data-tone="#A97A28">
+    <article class="pkg-card" style="--tone:#A97A28;" data-price="850">
+      <div class="pkg-name">Silver Package</div>
+      <div class="pkg-price">Rs 850 <small>/ head</small></div>
+      <ul class="pkg-items">
+        <li>සුදු බත් + කහ බත්</li>
+        <li>චිකెන් කරි</li>
+        <li>පරිප්පු කරි</li>
+        <li>ගොටුකොළ සම්බෝල</li>
+        <li>සොෆ්ට් ඩ්‍රින්ක්</li>
+      </ul>
+      <button class="select-btn">Package එක තෝරන්න</button>
+      <div class="guest-calc" hidden>
+        <label>ආගන්තුකයන් ගණන</label>
+        <input type="number" min="1" placeholder="උදා: 50" class="guest-input">
+        <div class="calc-total">මුළු මිල: <span>Rs 0</span></div>
+      </div>
+    </article>
+
+    <article class="pkg-card" style="--tone:#A97A28;" data-price="1200">
+      <div class="pkg-name">Gold Package</div>
+      <div class="pkg-price">Rs 1,200 <small>/ head</small></div>
+      <ul class="pkg-items">
+        <li>ෆ්‍රයිඩ් රයිස්</li>
+        <li>චිකెన් කරි + ෆිෂ් කරි</li>
+        <li>වම්බටු මොජු</li>
+        <li>පොල් සම්බෝල</li>
+        <li>අයිස්ක්‍රීම්</li>
+        <li>ෆෲට් ජූස්</li>
+      </ul>
+      <button class="select-btn">Package එක තෝරන්න</button>
+      <div class="guest-calc" hidden>
+        <label>ආගන්තුකයන් ගණන</label>
+        <input type="number" min="1" placeholder="උදා: 50" class="guest-input">
+        <div class="calc-total">මුළු මිල: <span>Rs 0</span></div>
+      </div>
+    </article>
+
+    <article class="pkg-card" style="--tone:#A97A28;" data-price="1650">
+      <div class="pkg-name">Platinum Package</div>
+      <div class="pkg-price">Rs 1,650 <small>/ head</small></div>
+      <ul class="pkg-items">
+        <li>කහ බත් + ෆ්‍රයිඩ් රයිස්</li>
+        <li>බීෆ් කරි + චිකెన් කරි + ෆිෂ් කරි</li>
+        <li>වම්බටු මොජු + පොල් සම්බෝල</li>
+        <li>වොටලප්පම්</li>
+        <li>අයිස්ක්‍රීම් + ෆෲට් ජූස්</li>
+      </ul>
+      <button class="select-btn">Package එක තෝරන්න</button>
+      <div class="guest-calc" hidden>
+        <label>ආගන්තුකයන් ගණන</label>
+        <input type="number" min="1" placeholder="උදා: 50" class="guest-input">
+        <div class="calc-total">මුළු මිල: <span>Rs 0</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- WEDDING -->
+<section class="category" id="wedding" style="background:#FBF4F0;">
+  <div class="cat-head">
+    <div class="cat-icon" style="background:rgba(122,46,46,0.12);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7A2E2E" stroke-width="1.6"><circle cx="9" cy="13" r="4"/><circle cx="16" cy="9" r="4"/></svg>
+    </div>
+    <div>
+      <h2>Wedding</h2>
+      <p>ඔබේ විශේෂතම දිනයට, ගෞරවනීය ලෙස සකසන ලද menu packages 3ක්.</p>
+    </div>
+  </div>
+
+  <div class="pkg-grid">
+    <article class="pkg-card" style="--tone:#7A2E2E;" data-price="1100">
+      <div class="pkg-name">Silver Package</div>
+      <div class="pkg-price">Rs 1,100 <small>/ head</small></div>
+      <ul class="pkg-items">
+        <li>කහ බත්</li>
+        <li>චිකెన් කරි</li>
+        <li>පරිප්පු කරි</li>
+        <li>ගොටුකොළ සම්බෝල</li>
+        <li>වොටලප්පම්</li>
+      </ul>
+      <button class="select-btn">Package එක තෝරන්න</button>
+      <div class="guest-calc" hidden>
+        <label>ආගන්තුකයන් ගණන</label>
+        <input type="number" min="1" placeholder="උදා: 100" class="guest-input">
+        <div class="calc-total">මුළු මිල: <span>Rs 0</span></div>
+      </div>
+    </article>
+
+    <article class="pkg-card" style="--tone:#7A2E2E;" data-price="1550">
+      <div class="pkg-name">Gold Package</div>
+      <div class="pkg-price">Rs 1,550 <small>/ head</small></div>
+      <ul class="pkg-items">
+        <li>කහ බත් + ෆ්‍රයිඩ් රයිස්</li>
+        <li>චිකెన් කරි + ෆිෂ් කරි</li>
+        <li>වම්බටු මොජු + පොල් සම්බෝල</li>
+        <li>වොටලප්පම්</li>
+        <li>ෆෲට් ජූස්</li>
+      </ul>
+      <button class="select-btn">Package එක තෝරන්න</button>
+      <div class="guest-calc" hidden>
+        <label>ආගන්තුකයන් ගණන</label>
+        <input type="number" min="1" placeholder="උදා: 100" class="guest-input">
+        <div class="calc-total">මුළු මිල: <span>Rs 0</span></div>
+      </div>
+    </article>
+
+    <article class="pkg-card" style="--tone:#7A2E2E;" data-price="2100">
+      <div class="pkg-name">Platinum Package</div>
+      <div class="pkg-price">Rs 2,100 <small>/ head</small></div>
+      <ul class="pkg-items">
+        <li>කහ බත් + ෆ්‍රයිඩ් රයිස්</li>
+        <li>බීෆ් කරි + චිකెන් කරි + ෆිෂ් කරි</li>
+        <li>වම්බටු මොජු + පොල් සම්බෝල + සෝයා කරි</li>
+        <li>වොටලප්පම් + කැවුම්</li>
+        <li>අයිස්ක්‍රීම් + ෆෲට් ජූස්</li>
+      </ul>
+      <button class="select-btn">Package එක තෝරන්න</button>
+      <div class="guest-calc" hidden>
+        <label>ආගන්තුකයන් ගණන</label>
+        <input type="number" min="1" placeholder="උදා: 100" class="guest-input">
+        <div class="calc-total">මුළු මිල: <span>Rs 0</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- FUNERAL -->
+<section class="category" id="funeral" style="background:#F4F5F2;">
+  <div class="cat-head">
+    <div class="cat-icon" style="background:rgba(91,107,91,0.14);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#44514A" stroke-width="1.6"><path d="M12 3c3 3 3 6 0 9-3-3-3-6 0-9Z"/><path d="M12 12v9"/><path d="M7 21h10"/></svg>
+    </div>
+    <div>
+      <h2>Funeral</h2>
+      <p>සරල හා ගෞරවනීය අවස්ථාවකට, සකසන ලද menu packages 3ක්.</p>
+    </div>
+  </div>
+
+  <div class="pkg-grid">
+    <article class="pkg-card" style="--tone:#5B6B5B;" data-price="600">
+      <div class="pkg-name">Silver Package</div>
+      <div class="pkg-price">Rs 600 <small>/ head</small></div>
+      <ul class="pkg-items">
+        <li>සුදු බත්</li>
+        <li>පරිප්පු කරි</li>
+        <li>ගොටුකොළ සම්බෝල</li>
+        <li>තේ</li>
+      </ul>
+      <button class="select-btn">Package එක තෝරන්න</button>
+      <div class="guest-calc" hidden>
+        <label>පිරිසන් ගණන</label>
+        <input type="number" min="1" placeholder="උදා: 80" class="guest-input">
+        <div class="calc-total">මුළු මිල: <span>Rs 0</span></div>
+      </div>
+    </article>
+
+    <article class="pkg-card" style="--tone:#5B6B5B;" data-price="800">
+      <div class="pkg-name">Gold Package</div>
+      <div class="pkg-price">Rs 800 <small>/ head</small></div>
+      <ul class="pkg-items">
+        <li>සුදු බත්</li>
+        <li>පරිප්පු කරි + සෝයා කරි</li>
+        <li>ගොටුකොළ සම්බෝල + පොල් සම්බෝල</li>
+        <li>තේ</li>
+      </ul>
+      <button class="select-btn">Package එක තෝරන්න</button>
+      <div class="guest-calc" hidden>
+        <label>පිරිසන් ගණන</label>
+        <input type="number" min="1" placeholder="උදා: 80" class="guest-input">
+        <div class="calc-total">මුළු මිල: <span>Rs 0</span></div>
+      </div>
+    </article>
+
+    <article class="pkg-card" style="--tone:#5B6B5B;" data-price="1050">
+      <div class="pkg-name">Platinum Package</div>
+      <div class="pkg-price">Rs 1,050 <small>/ head</small></div>
+      <ul class="pkg-items">
+        <li>සුදු බත් + කහ බත්</li>
+        <li>චිකెන් කරි + පරිප්පු කරි</li>
+        <li>ගොටුකොළ සම්බෝල + වම්බටු මොජු</li>
+        <li>තේ + ෆෲට් ජූස්</li>
+      </ul>
+      <button class="select-btn">Package එක තෝරන්න</button>
+      <div class="guest-calc" hidden>
+        <label>පිරිසන් ගණන</label>
+        <input type="number" min="1" placeholder="උදා: 80" class="guest-input">
+        <div class="calc-total">මුළු මිල: <span>Rs 0</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CUSTOMIZE -->
+<section class="category" id="customize">
+  <div class="cat-head">
+    <div class="cat-icon" style="background:rgba(31,75,67,0.12);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1F4B43" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
+    </div>
+    <div>
+      <h2>Customize Your Plate</h2>
+      <p>Package 3ම ඔබට ගැලපෙන්නේ නැත්නම්, මෙතනින් ඔබටම කැමති කෑම වර්ග තෝරාගෙන, plate එකක් සාදාගෙන, ආගන්තුකයන් ගණන දාල මුළු මිල බලාගන්න.</p>
+    </div>
+  </div>
+
+  <div class="builder">
+    <div class="food-groups" id="foodGroups">
+
+      <div class="food-group">
+        <h3>බත් වර්ගය (එකක් තෝරන්න)</h3>
+        <div class="food-list">
+          <label class="food-row"><span class="fname"><input type="radio" name="rice" value="150" checked> සුදු බත්</span><span class="fprice">Rs 150</span></label>
+          <label class="food-row"><span class="fname"><input type="radio" name="rice" value="200"> කහ බත්</span><span class="fprice">Rs 200</span></label>
+          <label class="food-row"><span class="fname"><input type="radio" name="rice" value="250"> ෆ්‍රයිඩ් රයිස්</span><span class="fprice">Rs 250</span></label>
+        </div>
+      </div>
+
+      <div class="food-group">
+        <h3>කරි වර්ග</h3>
+        <div class="food-list">
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="300"> චිකెන් කරි</span><span class="fprice">Rs 300</span></label>
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="280"> ෆිෂ් කරි</span><span class="fprice">Rs 280</span></label>
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="350"> බීෆ් කරි</span><span class="fprice">Rs 350</span></label>
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="100"> පරිප්පු කරි</span><span class="fprice">Rs 100</span></label>
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="150"> සෝයා කරි</span><span class="fprice">Rs 150</span></label>
+        </div>
+      </div>
+
+      <div class="food-group">
+        <h3>එළවළු / සම්බෝල</h3>
+        <div class="food-list">
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="80"> වම්බටු මොජු</span><span class="fprice">Rs 80</span></label>
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="70"> ගොටුකොළ සම්බෝල</span><span class="fprice">Rs 70</span></label>
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="60"> පොල් සම්බෝල</span><span class="fprice">Rs 60</span></label>
+        </div>
+      </div>
+
+      <div class="food-group">
+        <h3>රසකැවිලි</h3>
+        <div class="food-list">
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="150"> වොටලප්පම්</span><span class="fprice">Rs 150</span></label>
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="100"> කැවුම්</span><span class="fprice">Rs 100</span></label>
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="120"> අයිස්ක්‍රීම්</span><span class="fprice">Rs 120</span></label>
+        </div>
+      </div>
+
+      <div class="food-group">
+        <h3>බීම</h3>
+        <div class="food-list">
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="100"> සොෆ්ට් ඩ්‍රින්ක්</span><span class="fprice">Rs 100</span></label>
+          <label class="food-row"><span class="fname"><input type="checkbox" class="addon" value="130"> ෆෲට් ජූස්</span><span class="fprice">Rs 130</span></label>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="summary-panel">
+      <h3>ඔබේ Plate එක</h3>
+      <div class="summary-line">එක් plate එකක මිල <strong id="plateTotal">Rs 150</strong></div>
+      <hr class="divider">
+      <label for="guestCount">කීදෙනෙක්ට කෑම අවශ්‍යද?</label>
+      <input type="number" id="guestCount" min="1" placeholder="උදා: 10">
+      <hr class="divider">
+      <div class="grand-total">සම්පූර්ණ මිල <span id="grandTotal">Rs 0</span></div>
+      <p class="hint">plate එකේ මිල × පිරිසන් ගණන = සම්පූර්ණ මිල</p>
+    </aside>
+  </div>
+</section>
+
+<footer>
+  <span class="brand">Kaveesha Caters</span>
+  Birthday · Wedding · Funeral · Customize — සියලුම අවස්ථා සඳහා විශ්වාසනීය catering සේවාව.
+</footer>
+
+<script>
+  // Package cards: select + guest count -> total
+  document.querySelectorAll('.pkg-card').forEach(function(card){
+    var price = parseFloat(card.dataset.price);
+    var btn = card.querySelector('.select-btn');
+    var calc = card.querySelector('.guest-calc');
+    var input = card.querySelector('.guest-input');
+    var out = card.querySelector('.calc-total span');
+
+    btn.addEventListener('click', function(){
+      var willShow = calc.hidden;
+      calc.hidden = !calc.hidden;
+      btn.classList.toggle('active', willShow);
+      btn.textContent = willShow ? 'තෝරා ඇත ✓' : 'Package එක තෝරන්න';
+      if(willShow){ input.focus(); }
+    });
+
+    input.addEventListener('input', function(){
+      var guests = parseInt(input.value, 10) || 0;
+      var total = guests * price;
+      out.textContent = 'Rs ' + total.toLocaleString('en-US');
+    });
+  });
+
+  // Customize builder
+  var plateTotalEl = document.getElementById('plateTotal');
+  var grandTotalEl = document.getElementById('grandTotal');
+  var guestCountEl = document.getElementById('guestCount');
+
+  function recalc(){
+    var total = 0;
+    var riceChecked = document.querySelector('input[name="rice"]:checked');
+    if(riceChecked){ total += parseFloat(riceChecked.value); }
+    document.querySelectorAll('.addon:checked').forEach(function(cb){
+      total += parseFloat(cb.value);
+    });
+    plateTotalEl.textContent = 'Rs ' + total.toLocaleString('en-US');
+
+    var guests = parseInt(guestCountEl.value, 10) || 0;
+    var grand = guests * total;
+    grandTotalEl.textContent = 'Rs ' + grand.toLocaleString('en-US');
+  }
+
+  document.querySelectorAll('#foodGroups input').forEach(function(inp){
+    inp.addEventListener('change', recalc);
+  });
+  guestCountEl.addEventListener('input', recalc);
+
+  recalc();
+</script>
+
+
+<!-- KAVEESHA CATERS: ADMIN + BOOKING EXTENSION -->
+<style>
+.kc-modal{position:fixed;inset:0;background:#0008;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px}
+.kc-modal[hidden]{display:none}.kc-box{background:#fff;max-width:900px;width:100%;max-height:92vh;overflow:auto;border-radius:18px;padding:28px;position:relative}
+.kc-close{position:absolute;right:14px;top:8px;border:0;background:none;font-size:32px;cursor:pointer}
+.kc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kc-box input,.kc-box textarea,.kc-box select{width:100%;padding:11px;border:1px solid #ddd;border-radius:9px;margin:5px 0 12px}
+.kc-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0;border-bottom:1px solid #ddd;padding-bottom:12px}.kc-tabs button{padding:9px 12px;border:1px solid #ddd;border-radius:9px;background:#f7f7f3}
+.kc-section{border:1px solid #ddd;border-radius:12px;padding:15px;margin:12px 0}.kc-row{display:grid;grid-template-columns:1.5fr .7fr 1fr auto;gap:7px;align-items:center;margin:7px 0}.kc-row input,.kc-row select{margin:0}.kc-danger{background:#8b3030!important;color:#fff!important;border-color:#8b3030!important}.kc-booking{background:#f7f3eb;border-radius:10px;padding:12px;margin:10px 0;white-space:pre-line}
+@media(max-width:700px){.kc-grid,.kc-row{grid-template-columns:1fr}}
+</style>
+
+<button id="kcAdminButton" style="position:fixed;right:16px;bottom:16px;z-index:1000;border:0;border-radius:50%;width:48px;height:48px;background:#1F4B43;color:white;font-weight:700;box-shadow:0 5px 20px #0003" onclick="KC.openAdmin()">⚙</button>
+
+<div class="kc-modal" id="kcBookingModal" hidden>
+ <div class="kc-box">
+  <button class="kc-close" onclick="KC.close('kcBookingModal')">×</button>
+  <h2>Booking Request</h2>
+  <p>ඔබේ විස්තර ලබා දෙන්න.</p>
+  <form onsubmit="KC.submitBooking(event)">
+   <div class="kc-grid"><input id="kcName" required placeholder="ඔබේ නම"><input id="kcPhone" required placeholder="Phone Number">
+   <input id="kcDate" required type="date"><input id="kcTime" required type="time">
+   <input id="kcLocation" required placeholder="Event / Delivery Location"><textarea id="kcNotes" rows="3" placeholder="Additional Details"></textarea></div>
+   <div id="kcBookingSummary" class="kc-booking"></div>
+   <button class="btn-primary" type="submit">WhatsApp හරහා යවන්න</button>
+  </form>
+ </div>
+</div>
+
+<div class="kc-modal" id="kcAdminModal" hidden>
+ <div class="kc-box">
+  <button class="kc-close" onclick="KC.close('kcAdminModal')">×</button>
+  <div id="kcLogin">
+   <h2>Admin Login</h2>
+   <input id="kcUser" placeholder="Username"><input id="kcPass" type="password" placeholder="Password">
+   <button class="btn-primary" onclick="KC.login()">Login</button>
+   <p style="font-size:.85rem;color:#777">First login: <b>admin</b> / <b>admin123</b> — login details can be changed from the dashboard.</p>
+  </div>
+  <div id="kcDashboard" hidden>
+   <h2>Admin Dashboard</h2>
+   <p>Edit menu items, prices, categories, packages, contact details and WhatsApp number.</p>
+   <div class="kc-tabs">
+    <button onclick="KC.tab('site')">Site</button><button onclick="KC.tab('cats')">Categories & Packages</button>
+    <button onclick="KC.tab('food')">Food Items & Prices</button><button onclick="KC.tab('bookings')">Bookings</button><button onclick="KC.tab('security')">Username / Password</button><button onclick="KC.logout()">Logout</button>
+   </div>
+   <div id="kcAdminContent"></div>
+  </div>
+ </div>
+</div>
+
+<script>
+(function(){
+const KEY='kaveesha_caters_v3';
+const DEFAULT={
+ credentials:{username:'admin',password:'admin123'},
+ settings:{business:'Kaveesha Caters',contact:'Pradeep Krishantha',phone:'0771979331',whatsapp:'0771979331',address:'629/152, Kandaliaddapaluwa, Ragama'},
+ categories:[
+  {id:'birthday',name:'Birthday Party',desc:'ඔබේ උපන්දින උත්සවයට ගැලපෙන menu packages.',packages:[
+   {name:'Silver Package',price:850,items:['සුදු බත් + කහ බත්','චිකෙන් කරි','පරිප්පු කරි','ගොටුකොළ සම්බෝල','සොෆ්ට් ඩ්‍රින්ක්']},
+   {name:'Gold Package',price:1200,items:['ෆ්‍රයිඩ් රයිස්','චිකෙන් කරි + ෆිෂ් කරි','වම්බටු මොජු','පොල් සම්බෝල','අයිස්ක්‍රීම්','ෆෲට් ජූස්']},
+   {name:'Platinum Package',price:1650,items:['කහ බත් + ෆ්‍රයිඩ් රයිස්','බීෆ් කරි + චිකෙන් කරි + ෆිෂ් කරි','වම්බටු මොජු + පොල් සම්බෝල','වොටලප්පම්','අයිස්ක්‍රීම් + ෆෲට් ජූස්']}
+  ]},
+  {id:'wedding',name:'Wedding',desc:'ඔබේ විශේෂතම දිනයට, ගෞරවනීය ලෙස සකසන ලද menu packages 3ක්.',packages:[
+   {name:'Silver Package',price:1100,items:['කහ බත්','චිකෙන් කරි','පරිප්පු කරි','ගොටුකොළ සම්බෝල','වොටලප්පම්']},
+   {name:'Gold Package',price:1550,items:['කහ බත් + ෆ්‍රයිඩ් රයිස්','චිකෙන් කරි + ෆිෂ් කරි','වම්බටු මොජු + පොල් සම්බෝල','වොටලප්පම්','ෆෲට් ජූස්']},
+   {name:'Platinum Package',price:2100,items:['කහ බත් + ෆ්‍රයිඩ් රයිස්','බීෆ් කරි + චිකෙන් කරි + ෆිෂ් කරි','වම්බටු මොජු + පොල් සම්බෝල + සෝයා කරි','වොටලප්පම් + කැවුම්','අයිස්ක්‍රීම් + ෆෲට් ජූස්']}
+  ]},
+  {id:'funeral',name:'Funeral',desc:'සරල හා ගෞරවනීය අවස්ථාවකට, සකසන ලද menu packages 3ක්.',packages:[
+   {name:'Silver Package',price:600,items:['සුදු බත්','පරිප්පු කරි','ගොටුකොළ සම්බෝල','තේ']},
+   {name:'Gold Package',price:800,items:['සුදු බත්','පරිප්පු කරි + සෝයා කරි','ගොටුකොළ සම්බෝල + පොල් සම්බෝල','තේ']},
+   {name:'Platinum Package',price:1050,items:['සුදු බත් + කහ බත්','චිකෙන් කරි + පරිප්පු කරි','ගොටුකොළ සම්බෝල + වම්බටු මොජු','තේ + ෆෲට් ජූස්']}
+  ]}
+ ],
+ groups:[
+  {name:'බත් වර්ගය (එකක් තෝරන්න)',single:true,items:[['සුදු බත්',150],['කහ බත්',200],['ෆ්‍රයිඩ් රයිස්',250]]},
+  {name:'කරි වර්ග',items:[['චිකෙන් කරි',300],['ෆිෂ් කරි',280],['බීෆ් කරි',350],['පරිප්පු කරි',100],['සෝයා කරි',150]]},
+  {name:'එළවළු / සම්බෝල',items:[['වම්බටු මොජු',80],['ගොටුකොළ සම්බෝල',70],['පොල් සම්බෝල',60]]},
+  {name:'රසකැවිලි',items:[['වොටලප්පම්',150],['කැවුම්',100],['අයිස්ක්‍රීම්',120]]},
+  {name:'පාන වර්ග',items:[['සොෆ්ට් ඩ්‍රින්ක්',100],['ෆෲට් ජූස්',130]]}
+ ],bookings:[]
+};
+let D=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(DEFAULT);
+D.credentials=D.credentials||structuredClone(DEFAULT.credentials); D.settings=D.settings||structuredClone(DEFAULT.settings); D.bookings=D.bookings||[];
+D.categories=D.categories&&D.categories.length?D.categories:structuredClone(DEFAULT.categories); D.groups=D.groups&&D.groups.length?D.groups:structuredClone(DEFAULT.groups);
+function save(){localStorage.setItem(KEY,JSON.stringify(D))}
+function e(x){return String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function n(x){return 'Rs '+Number(x||0).toLocaleString('en-US')}
+function wa(){return String(D.settings.whatsapp||'').replace(/\D/g,'').replace(/^0/,'94')}
+function close(id){document.getElementById(id).hidden=true}
+function openAdmin(){kcAdminModal.hidden=false;kcLogin.hidden=false;kcDashboard.hidden=true;kcUser.value='';kcPass.value=''}
+function login(){if(kcUser.value===D.credentials.username&&kcPass.value===D.credentials.password){kcLogin.hidden=true;kcDashboard.hidden=false;tab('site')}else alert('Username හෝ password වැරදියි.')}
+function logout(){kcDashboard.hidden=true;kcLogin.hidden=false;close('kcAdminModal')}
+function tab(t){let c=document.getElementById('kcAdminContent');c.innerHTML=t==='site'?site():t==='cats'?cats():t==='food'?food():t==='security'?security():bookings()}
+function site(){let s=D.settings;return `<div class="kc-section"><h3>Contact / Website Details</h3><label>Business Name<input id="sBusiness" value="${e(s.business)}"></label><label>Contact Person<input id="sContact" value="${e(s.contact)}"></label><label>Phone<input id="sPhone" value="${e(s.phone)}"></label><label>WhatsApp Number<input id="sWA" value="${e(s.whatsapp)}"></label><label>Address<textarea id="sAddress">${e(s.address)}</textarea></label><button class="btn-primary" onclick="KC.saveSite()">Save Changes</button></div>`}
+function saveSite(){Object.assign(D.settings,{business:sBusiness.value,contact:sContact.value,phone:sPhone.value,whatsapp:sWA.value,address:sAddress.value});save();applyPublic();alert('Saved successfully.')}
+function cats(){return `<div class="kc-section"><h3>Add Category</h3><div class="kc-row"><input id="newCat" placeholder="Category name"><input id="newDesc" placeholder="Description"><button class="btn-primary" onclick="KC.addCat()">Add</button></div></div>`+D.categories.map((c,i)=>`<div class="kc-section"><h3>Category ${i+1}</h3><div class="kc-row"><input id="cn${i}" value="${e(c.name)}"><input id="cd${i}" value="${e(c.desc||'')}"><button class="btn-primary" onclick="KC.editCat(${i})">Save</button><button class="kc-danger" onclick="KC.delCat(${i})">Delete</button></div>${(c.packages||[]).map((p,j)=>`<div class="kc-row"><input id="pn${i}_${j}" value="${e(p.name)}"><input id="pp${i}_${j}" type="number" value="${p.price}"><input id="pi${i}_${j}" value="${e((p.items||[]).join(' | '))}" title="Items separated by |"><button class="btn-primary" onclick="KC.editPkg(${i},${j})">Save</button><button class="kc-danger" onclick="KC.delPkg(${i},${j})">Delete</button></div>`).join('')}<div class="kc-row"><input id="an${i}" placeholder="New package"><input id="ap${i}" type="number" placeholder="Price"><input id="ai${i}" placeholder="Item 1 | Item 2"><button class="btn-primary" onclick="KC.addPkg(${i})">Add Package</button></div></div>`).join('')}
+function food(){return `<div class="kc-section"><h3>Food Items & Prices</h3><p style="color:#666">මෙතනින් දැනට website එකේ තිබෙන සෑම food category එකකම කෑම නම සහ price එක වෙනස් කරන්න පුළුවන්. Save කළාම customer page එකත් update වේ.</p></div><div class="kc-section"><h3>Add Food Category</h3><div class="kc-row"><input id="ng" placeholder="Category name"><button class="btn-primary" onclick="KC.addGroup()">Add Category</button></div></div>`+D.groups.map((g,i)=>`<div class="kc-section"><h3>${e(g.name)}</h3><div class="kc-row"><input id="gn${i}" value="${e(g.name)}"><button class="btn-primary" onclick="KC.editGroup(${i})">Save Category</button><button class="kc-danger" onclick="KC.delGroup(${i})">Delete Category</button></div>${(g.items||[]).map((it,j)=>`<div class="kc-row"><input id="fn${i}_${j}" value="${e(it[0])}" placeholder="Food name"><input id="fp${i}_${j}" type="number" min="0" value="${it[1]}" placeholder="Price"><button class="btn-primary" onclick="KC.editFood(${i},${j})">Save Food</button><button class="kc-danger" onclick="KC.delFood(${i},${j})">Delete</button></div>`).join('')}<div class="kc-row"><input id="fa${i}" placeholder="New food item"><input id="fz${i}" type="number" min="0" placeholder="Price"><button class="btn-primary" onclick="KC.addFood(${i})">Add Food</button></div></div>`).join('')}
+function security(){return `<div class="kc-section"><h3>Admin Login Details</h3><p style="color:#666">Default login එක වෙනස් කරලා ඔබේම username/password එකක් භාවිතා කරන්න.</p><label>New Username<input id="newUser" value="${e(D.credentials.username)}"></label><label>New Password<input id="newPass" type="password" placeholder="අලුත් password එක"></label><label>Confirm Password<input id="newPass2" type="password" placeholder="Password එක නැවත ඇතුළත් කරන්න"></label><button class="btn-primary" onclick="KC.changeCredentials()">Change Login Details</button><p style="font-size:.8rem;color:#a65">සටහන: මෙය single-file browser/localStorage version එකක් නිසා සැබෑ server-side security එකක් නොවේ. Public hosting එකක secure multi-device admin එකකට backend/database එකක් අවශ්‍යයි.</p></div>`}
+function bookings(){return `<div class="kc-section"><h3>Booking Enquiries</h3>${D.bookings.length?D.bookings.map((b,i)=>`<div class="kc-booking"><b>${e(b.name)}</b> — ${e(b.type)}<br>Phone: ${e(b.phone)}<br>Date: ${e(b.date)} ${e(b.time)}<br>Location: ${e(b.location)}<br>Guests: ${b.guests}<br>Estimated Total: ${n(b.total)}<br>Details: ${e(b.notes||'-')}<br><select onchange="KC.status(${i},this.value)">${['New','Contacted','Confirmed','Completed','Cancelled'].map(x=>`<option ${x===b.status?'selected':''}>${x}</option>`).join('')}</select> <button class="kc-danger" onclick="KC.delBook(${i})">Delete</button></div>`).join(''):'No bookings yet.'}</div>`}
+function refresh(t){save();tab(t)}
+function applyPublic(){
+ // Update static package cards with admin-edited category/package data.
+ D.categories.forEach(c=>{const sec=document.getElementById(c.id);if(!sec)return;const cards=sec.querySelectorAll('.pkg-card');(c.packages||[]).forEach((p,i)=>{const card=cards[i];if(!card)return;card.dataset.price=p.price;const name=card.querySelector('.pkg-name'),price=card.querySelector('.pkg-price'),ul=card.querySelector('.pkg-items');if(name)name.textContent=p.name;if(price)price.innerHTML=n(p.price)+' <small>/ head</small>';if(ul)ul.innerHTML=(p.items||[]).map(x=>'<li>'+e(x)+'</li>').join('')});const h=sec.querySelector('.cat-head h2');if(h)h.textContent=c.name;const desc=sec.querySelector('.cat-head p');if(desc)desc.textContent=c.desc||''});
+ // Rebuild customize menu from admin data.
+ const fg=document.getElementById('foodGroups'); if(fg){fg.innerHTML=D.groups.map((g,i)=>`<div class="food-group"><h3>${e(g.name)}</h3><div class="food-list">${(g.items||[]).map((it,j)=>`<label class="food-row"><span class="fname"><input type="${g.single?'radio':'checkbox'}" name="${g.single?'rice':'addon_'+i}" class="${g.single?'':'addon'}" value="${it[1]}" data-food="${e(it[0])}" ${g.single&&i===0&&j===0?'checked':''}> ${e(it[0])}</span><span class="fprice">${n(it[1])}</span></label>`).join('')}</div></div>`).join('');
+  document.querySelectorAll('#foodGroups input').forEach(inp=>inp.addEventListener('change',recalc)); recalc();
+ }
+ const brand=document.querySelector('.brand'); if(brand)brand.innerHTML=e(D.settings.business).replace(/\s+(.+)$/,' <span>$1</span>');
+ const footer=document.querySelector('footer .brand'); if(footer)footer.textContent=D.settings.business;
+}
+function recalc(){let total=0;const r=document.querySelector('#foodGroups input[name="rice"]:checked');if(r)total+=+r.value;document.querySelectorAll('#foodGroups .addon:checked').forEach(x=>total+=+x.value);if(document.getElementById('plateTotal'))document.getElementById('plateTotal').textContent=n(total);const g=+(document.getElementById('guestCount')?.value||0);if(document.getElementById('grandTotal'))document.getElementById('grandTotal').textContent=n(total*g)}
+window.KC={close,openAdmin,login,logout,tab,saveSite,
+ addCat(){if(!newCat.value.trim())return;D.categories.push({id:'cat_'+Date.now(),name:newCat.value.trim(),desc:newDesc.value.trim(),packages:[]});refresh('cats')},
+ editCat(i){D.categories[i].name=document.getElementById('cn'+i).value.trim();D.categories[i].desc=document.getElementById('cd'+i).value.trim();refresh('cats')},
+ delCat(i){if(confirm('Delete this category?')){D.categories.splice(i,1);refresh('cats')}},
+ addPkg(i){let name=document.getElementById('an'+i).value.trim(),price=+document.getElementById('ap'+i).value,items=document.getElementById('ai'+i).value.split('|').map(x=>x.trim()).filter(Boolean);if(name&&price>0){D.categories[i].packages.push({name,price,items});refresh('cats')}},
+ editPkg(i,j){let p=D.categories[i].packages[j];p.name=document.getElementById(`pn${i}_${j}`).value.trim();p.price=+document.getElementById(`pp${i}_${j}`).value;p.items=document.getElementById(`pi${i}_${j}`).value.split('|').map(x=>x.trim()).filter(Boolean);refresh('cats')},
+ delPkg(i,j){D.categories[i].packages.splice(j,1);refresh('cats')},
+ addGroup(){if(ng.value.trim()){D.groups.push({name:ng.value.trim(),items:[]});refresh('food')}},
+ editGroup(i){D.groups[i].name=document.getElementById('gn'+i).value.trim();refresh('food')},
+ delGroup(i){if(confirm('Delete this food category?')){D.groups.splice(i,1);refresh('food')}},
+ addFood(i){let name=document.getElementById('fa'+i).value.trim(),price=+document.getElementById('fz'+i).value;if(name&&price>=0){D.groups[i].items.push([name,price]);refresh('food')}},
+ editFood(i,j){D.groups[i].items[j]=[document.getElementById(`fn${i}_${j}`).value.trim(),+document.getElementById(`fp${i}_${j}`).value];save();applyPublic();tab('food');alert('Food item සහ price updated.')},
+ delFood(i,j){if(confirm('Delete this food item?')){D.groups[i].items.splice(j,1);refresh('food')}},
+ changeCredentials(){let u=newUser.value.trim(),p=newPass.value,p2=newPass2.value;if(!u||!p){alert('Username සහ password දෙකම අවශ්‍යයි.');return}if(p!==p2){alert('Passwords දෙක එකිනෙකට සමාන නැහැ.');return}D.credentials={username:u,password:p};save();alert('Login details changed successfully. අලුත් username/password එකෙන් නැවත login වෙන්න.');logout()},
+ status(i,v){D.bookings[i].status=v;save()},delBook(i){D.bookings.splice(i,1);save();tab('bookings')},
+ book(type,total,guests){KC.current={type,total,guests};kcBookingSummary.textContent=`Selection: ${type}\nGuests: ${guests}\nEstimated Total: ${n(total)}`;kcBookingModal.hidden=false},
+ submitBooking(ev){ev.preventDefault();let b={id:Date.now(),name:kcName.value,phone:kcPhone.value,date:kcDate.value,time:kcTime.value,location:kcLocation.value,notes:kcNotes.value,type:KC.current.type,guests:KC.current.guests,total:KC.current.total,status:'New'};D.bookings.unshift(b);save();let msg=`Kaveesha Caters Booking Request\n\nName: ${b.name}\nPhone: ${b.phone}\nSelection: ${b.type}\nGuests: ${b.guests}\nDate: ${b.date}\nTime: ${b.time}\nLocation: ${b.location}\nEstimated Total: ${n(b.total)}\nDetails: ${b.notes||'-'}`;window.open('https://wa.me/'+wa()+'?text='+encodeURIComponent(msg),'_blank');close('kcBookingModal')}
+};
+KC.current={type:'',total:0,guests:0};
+// Existing package cards: keep calculation and add booking button.
+document.querySelectorAll('.pkg-card').forEach(function(card){let price=+card.dataset.price||0,btn=card.querySelector('.select-btn'),calc=card.querySelector('.guest-calc'),input=card.querySelector('.guest-input'),out=card.querySelector('.calc-total span');if(!btn||!calc||!input)return;btn.addEventListener('click',function(){let show=calc.hidden;calc.hidden=!calc.hidden;btn.classList.toggle('active',show);btn.textContent=show?'තෝරා ඇත ✓':'Package එක තෝරන්න';if(show)input.focus();if(show&&!calc.querySelector('.booking-btn')){let b=document.createElement('button');b.className='btn-primary booking-btn';b.textContent='Booking Request';b.type='button';calc.appendChild(b);b.addEventListener('click',()=>KC.book(card.querySelector('.pkg-name')?.textContent||'Package',price*(+input.value||0),+(input.value||0)))}});input.addEventListener('input',()=>{price=+card.dataset.price||0;out.textContent=n((+input.value||0)*price)})});
+if(document.getElementById('guestCount'))document.getElementById('guestCount').addEventListener('input',recalc);
+document.querySelectorAll('#foodGroups input').forEach(inp=>inp.addEventListener('change',recalc));
+applyPublic();
+})();
+</script>
+
+</body>
+</html>
